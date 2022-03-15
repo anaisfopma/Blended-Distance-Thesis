@@ -11,8 +11,6 @@ Student: Anaïs Fopma
 
 Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
 
-The thesis manuscript can be found here [here](https://github.com/anaisfopma/Blended-Distance-Thesis/blob/main/Thesis_manuscript.pdf). 
-Software requirements are R (http://www.r-project.org}) and R-package mice (version 2.21, http://cran.r-project.org/web/packages/mice/index.html). 
 
 ---
 
