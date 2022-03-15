@@ -1,5 +1,6 @@
 # What to compare on 500 cases with varying levels of missingness in your outcome (25%, 50%, perhaps if time permits 75%)  and according to MCAR and MAR mechanisms (MARleft, **MARright**, MARmid, MARtail) and correlation (0, .1, .7) and skewness (normal vs very skewed)
 # 
+# test
 # - pmm (reference because we like it)
 # - blended pmm (blend factor as one --> this should be same as pmm)
 # - one time rank
