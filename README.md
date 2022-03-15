@@ -14,12 +14,11 @@ Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
 
 ---
 
-| Files/Folders          | Description   |
-| -----------------      | ------------- |
-|Simulation study I     |All files for the first simulation study|
-|Simulation study II    |All files for the second simulation study|
-|Execute.R              |R-script to run the simulation study|
-|Thesis.pdf|            |The thesis manuscript|
-|/Functions             |Folder containing the functions used by '1. Execute.R'|
-|/Simulation conditions |Folder that contains the simulation conditions executed by 'Execute.R'|
-|/Workspaces            |'Folder containing the final simulated data R-workspace as obtained by running '1. Execute.R' |
+| Folders/Files            | Description   |
+| -----------------        | ------------- |
+|Simulation study I        |Folder containing all files for the first simulation study|
+|/Simulation conditions I  |Folder containing the simulation conditions executed by 'Execute_I.R'|
+|/Execute_I.R              |R-script to run Simulation study I|
+|/mice.impute.blended      |Function to use the blended distance|
+|Simulation study II       |Folder containing all files for the second simulation study|
+|Thesis.pdf                |Thesis manuscript|
