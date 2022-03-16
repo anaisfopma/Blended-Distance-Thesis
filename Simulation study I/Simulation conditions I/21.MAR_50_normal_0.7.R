@@ -40,8 +40,8 @@ mis_data <- data %>%
 # default type is set to right. so mech = "MAR" generates 
 # right-tailed MAR missingness
 
-# optional: remove data: 
-# rm(data)
+# optional: remove data 
+rm(data)
 
 # run imputation
 plan(multisession) # increase speed through futures
