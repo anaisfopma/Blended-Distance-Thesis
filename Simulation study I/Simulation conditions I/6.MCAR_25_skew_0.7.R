@@ -131,5 +131,26 @@ imp.mahalan.scale <-
 
 plan(sequential)
 
+
+
+##########
+# OUTPUT #
+##########
+
+# save the relevant output
+out <- list(imp.pmm = imp.pmm,
+            imp.blend.pmm.rank = imp.blend.pmm.rank,
+            imp.blend.pmm.scale = imp.blend.pmm.scale,
+            imp.blendhalf.rank = imp.blendhalf.rank,
+            imp.blendhalf.scale = imp.blendhalf.scale,
+            imp.mahalan.rank = imp.mahalan.rank,
+            imp.mahalan.scale = imp.mahalan.scale)
+
+# remove everything except output
+rm(list=setdiff(ls(), "out"))
+
+# evaluate the output
+eval <- map(out, eval_sims)
+
 # Save workspace
 save.image("MCAR_25_skew_0.7.RData")
