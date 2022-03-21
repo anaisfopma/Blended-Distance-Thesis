@@ -151,4 +151,4 @@ rm(list=setdiff(ls(), "out"))
 eval <- map(out, eval_sims)
 
 # Save workspace
-save.image("MCAR_50_skew_0.1.RData")
+save.image("Workspaces/MCAR_50_skew_0.1.RData")
