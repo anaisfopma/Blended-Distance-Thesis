@@ -43,5 +43,3 @@ source("Simulation study I/Simulation conditions I/9.MAR_50_normal_0.7.R")
 source("Simulation study I/Simulation conditions I/10.MAR_50_skew_0.R")
 source("Simulation study I/Simulation conditions I/11.MAR_50_skew_0.1.R")
 source("Simulation study I/Simulation conditions I/12.MAR_50_skew_0.7.R")
-
-save.image("Workspaces/Simulation_Blended.RData")
