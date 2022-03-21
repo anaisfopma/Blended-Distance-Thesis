@@ -141,11 +141,11 @@ out <- list(imp.pmm = imp.pmm,
             imp.mahalan.rank = imp.mahalan.rank,
             imp.mahalan.scale = imp.mahalan.scale)
 
-# remove everything except output
-rm(list=setdiff(ls(), "out"))
-
 # evaluate the output
 eval <- map(out, eval_sims)
+
+# remove everything except output and evaluation
+rm(list=setdiff(ls(), c("out", "eval")))
 
 # Save workspace
 save.image("Workspaces/MCAR_25_normal_0.RData")
