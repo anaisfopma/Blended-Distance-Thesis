@@ -148,4 +148,4 @@ rm(list=setdiff(ls(), "out"))
 eval <- map(out, eval_sims)
 
 # Save workspace
-save.image("MAR_25_normal_0.7.RData")
+save.image("Workspaces/MAR_25_normal_0.7.RData")
