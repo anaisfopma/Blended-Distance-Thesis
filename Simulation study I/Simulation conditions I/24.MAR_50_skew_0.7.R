@@ -16,9 +16,7 @@ rho = 0.7                   # variable (rho = 0, rho = .1, rho = .7)
 # DATA GENERATING FUNCTION #
 ############################
 
-# function to skew the predictors
-skew <- function(x){x^12/max(x^11)}
-
+# skewed data generation
 gen_data <- function(n) {
   out <- rmvnorm(n = n,
                  sigma = matrix(c(1, rho, rho, rho, 1, rho, rho, rho, 1), 
@@ -27,7 +25,7 @@ gen_data <- function(n) {
                  mean = c(10, 10, 10))
   colnames(out) <- c("x1", "x2", "x3")
   out %>% 
-    skew() %>%
+    apply(., MARGIN = 2, function(x) {x^12/max(x^11)}) %>%
     as_tibble %>% 
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
