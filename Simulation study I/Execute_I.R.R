@@ -9,7 +9,7 @@ require(furrr) # apply mapping functions in parallel using futures
 require(textshape) # column_to_rownames function in evaluate.function
 
 # load evaluation function
-source("evaluate.function.R")
+source("Simulation study I/evaluate.function.R")
 
 # execute scripts for condition MCAR with 25% missingness
 source("Simulation study I/Simulation conditions I/1.MCAR_25_normal_0.R")
