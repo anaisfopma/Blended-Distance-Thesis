@@ -27,7 +27,7 @@ gen_data <- function(n) {
                  mean = c(10, 10, 10))
   colnames(out) <- c("x1", "x2", "x3")
   out %>% 
-    skew() %>%
+    apply(., MARGIN = 2, skew) %>%
     as_tibble %>% 
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
