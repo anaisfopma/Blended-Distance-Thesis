@@ -147,5 +147,5 @@ eval <- map(out, eval_sims)
 # remove everything except output and evaluation
 rm(list=setdiff(ls(), c("out", "eval")))
 
-# Save workspace
+# save workspace
 save.image("Workspaces/MCAR_25_normal_0.RData")
