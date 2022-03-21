@@ -8,8 +8,8 @@ require(future) # parallel processing
 require(furrr) # apply mapping functions in parallel using futures 
 require(textshape) # column_to_rownames function in evaluate.function
 
-# load simulation function
-source("Functions/mice.impute.blended.R")
+# load evaluation function
+source("evaluate.function.R")
 
 # execute scripts for condition MCAR with 25% missingness
 source("Simulation study I/Simulation conditions I/1.MCAR_25_normal_0.R")
