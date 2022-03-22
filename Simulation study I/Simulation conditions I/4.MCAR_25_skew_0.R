@@ -148,7 +148,7 @@ out <- list(imp.pmm = imp.pmm,
 eval <- map(out, eval_sims)
 
 # remove everything except output and evaluation
-rm(list=setdiff(ls(), c("out", "eval")))
+rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
 
 # save workspace
-save.image("Workspaces/MCAR_25_skew_0.7.RData")
+save.image("Workspaces/MCAR_25_skew_0.RData")
