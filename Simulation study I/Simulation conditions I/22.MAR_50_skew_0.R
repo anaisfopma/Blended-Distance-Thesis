@@ -31,7 +31,11 @@ gen_data <- function(n) {
 }
 
 # get true value of y
+<<<<<<< Updated upstream
 true.y <- replicate(100000, expr = gen_data(n), simplify = FALSE) %>% 
+=======
+mean.y <- replicate(100000, expr = gen_data(n), simplify = FALSE) %>% 
+>>>>>>> Stashed changes
   lapply(colMeans) %>% 
   do.call("rbind", .) %>% 
   colMeans %>% 
