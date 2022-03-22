@@ -30,24 +30,17 @@ gen_data <- function(n) {
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
 
-# get mean
-true.y <- replicate(1000, 
-                  expr = gen_data(n), 
-                  simplify = FALSE) %>% 
-                  lapply(colMeans) %>% 
-                  do.call("rbind", .) %>% 
-                  colMeans %>% last()
-
-true.y
+# get true value of y
+true.y <- replicate(100000, expr = gen_data(n), simplify = FALSE) %>% 
+  lapply(colMeans) %>% 
+  do.call("rbind", .) %>% 
+  colMeans %>% 
+  last()
 
 # generate list of data sets
 data <- replicate(nsim, 
                   expr = gen_data(n), 
                   simplify = FALSE)
-
-
-
-
 
 # make data missing
 mis_data <- data %>% 
@@ -165,4 +158,4 @@ eval <- map(out, eval_sims)
 rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
 
 # save workspace
-save.image("Workspaces/MCAR_25_skew_0.RData")
+save.image("Workspaces/4.MCAR_25_skew_0.RData")
