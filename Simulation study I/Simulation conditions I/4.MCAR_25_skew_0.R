@@ -30,10 +30,22 @@ gen_data <- function(n) {
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
 
+# get mean
+data <- replicate(10000, 
+                  expr = gen_data(n), 
+                  simplify = FALSE)
+lapply(data, colMeans) %>% do.call("rbind", .) %>% colMeans
+
+true.y <- colMeans 
+
 # generate list of data sets
 data <- replicate(nsim, 
                   expr = gen_data(n), 
                   simplify = FALSE)
+
+
+
+
 
 # make data missing
 mis_data <- data %>% 
