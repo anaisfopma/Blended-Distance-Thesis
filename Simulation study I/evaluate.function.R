@@ -1,4 +1,4 @@
-eval_sims <- function(sims, truth = c(0, 1, 1, 1), true.y = 30){
+eval_sims <- function(sims, truth = c(0, 1, 1, 1), true.y){
   params <- sims %>% 
     map(~.x %>% 
           with(lm(y ~ x1 + x2 + x3)) %>% 

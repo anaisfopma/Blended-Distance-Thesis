@@ -31,12 +31,14 @@ gen_data <- function(n) {
 }
 
 # get mean
-data <- replicate(10000, 
+true.y <- replicate(1000, 
                   expr = gen_data(n), 
-                  simplify = FALSE)
-lapply(data, colMeans) %>% do.call("rbind", .) %>% colMeans
+                  simplify = FALSE) %>% 
+                  lapply(colMeans) %>% 
+                  do.call("rbind", .) %>% 
+                  colMeans %>% last()
 
-true.y <- colMeans 
+true.y
 
 # generate list of data sets
 data <- replicate(nsim, 

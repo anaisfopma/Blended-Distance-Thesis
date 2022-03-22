@@ -7,8 +7,9 @@ set.seed(123)
 n = 500                     # fixed
 nsim = 1000                 # fixed
 mis = .50                   # variable (25% and 50%)
-mech = "MAR"               # variable (MCAR and MARright)
+mech = "MAR"                # variable (MCAR and MARright)
 rho = 0.7                   # variable (rho = 0, rho = .1, rho = .7)
+true.y = 30                 # true value of y
 
 
 
@@ -148,4 +149,4 @@ eval <- map(out, eval_sims)
 rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
 
 # save workspace
-save.image("Workspaces/MAR_50_normal_0.7.RData")
+save.image("Workspaces/21.MAR_50_normal_0.7.RData")
