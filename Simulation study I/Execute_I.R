@@ -1,12 +1,12 @@
-# load required packages
-require(mvtnorm) # data generation
-require(dplyr) # mutate
-require(magrittr) # %>% pipe operator
-require(purrr) # mapping
-require(mice) # amputation of data and imputation with pmm
-require(future) # parallel processing
-require(furrr) # apply mapping functions in parallel using futures 
-require(tibble) # column_to_rownames function in evaluate.function
+# load libraryd packages
+library(mvtnorm) # data generation
+library(dplyr) # mutate
+library(magrittr) # %>% pipe operator
+library(purrr) # mapping
+library(mice) # amputation of data and imputation with pmm
+library(future) # parallel processing
+library(furrr) # apply mapping functions in parallel using futures 
+library(tibble) # column_to_rownames function in evaluate.function
 
 # load evaluation function
 source("evaluate.function.R")
