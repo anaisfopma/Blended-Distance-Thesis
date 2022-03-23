@@ -9,7 +9,6 @@ nsim = 1000                 # fixed
 mis = .50                   # variable (25% and 50%)
 mech = "MAR"                # variable (MCAR and MARright)
 rho = 0                     # variable (rho = 0, rho = .1, rho = .7)
-mean.y = 30                 # true value of y
 
 
 ############################
