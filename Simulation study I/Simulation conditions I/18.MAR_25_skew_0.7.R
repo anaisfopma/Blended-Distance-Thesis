@@ -7,7 +7,7 @@ set.seed(123)
 n = 500                     # fixed
 nsim = 1000                 # fixed
 mis = .25                   # variable (25% and 50%)
-mech = "MAR"               # variable (MCAR and MARright)
+mech = "MAR"                # variable (MCAR and MARright)
 rho = 0.7                   # variable (rho = 0, rho = .1, rho = .7)
 
 
@@ -30,23 +30,18 @@ gen_data <- function(n) {
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
 
-# get true value of y
-mean.y <- replicate(100000, expr = gen_data(n), simplify = FALSE) %>% 
-  lapply(colMeans) %>% 
-  do.call("rbind", .) %>% 
-  colMeans %>% 
-  last()
+# generate true reference data set
+data <- gen_data(n)
+mean.y <- data$y %>% mean()
+true.x <- data %$% lm(y ~ x1 + x2 + x3) %>% coef()
 
-# generate list of data sets
-data <- replicate(nsim, 
-                  expr = gen_data(n), 
-                  simplify = FALSE)
-
-# make data missing
-mis_data <- data %>% 
-  map(~.x %>% ampute(prop = mis, 
-                     mech = mech, 
-                     pattern = c(1, 1, 1, 0))) 
+# create list of incomplete versions
+mis_data <- replicate(nsim, 
+                      expr = data %>% 
+                        ampute(prop = mis, 
+                               mech = mech, 
+                               pattern = c(1, 1, 1, 0)), 
+                      simplify = FALSE)
 # default type is set to right. so mech = "MAR" generates 
 # right-tailed MAR missingness
 
