@@ -9,7 +9,6 @@ nsim = 1000                 # fixed
 mis = .50                   # variable (25% and 50%)
 mech = "MCAR"               # variable (MCAR and MARright)
 rho = 0                     # variable (rho = 0, rho = .1, rho = .7)
-mean.y = 30                 # true value of y
 
 
 
@@ -28,16 +27,18 @@ gen_data <- function(n) {
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
 
-# generate list of data sets
-data <- replicate(nsim, 
-                  expr = gen_data(n), 
-                  simplify = FALSE)
+# generate true reference data set
+data <- gen_data(n)
+mean.y <- data$y %>% mean()
+true.x <- data %$% lm(y ~ x1 + x2 + x3) %>% coef()
 
-# make data missing
-mis_data <- data %>% 
-  map(~.x %>% ampute(prop = mis, 
-                     mech = mech, 
-                     pattern = c(1, 1, 1, 0))) 
+# create list of incomplete versions
+mis_data <- replicate(nsim, 
+                      expr = data %>% 
+                        ampute(prop = mis, 
+                               mech = mech, 
+                               pattern = c(1, 1, 1, 0)), 
+                      simplify = FALSE)
 # default type is set to right. so mech = "MAR" generates 
 # right-tailed MAR missingness
 
