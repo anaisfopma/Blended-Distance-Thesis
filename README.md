@@ -1,11 +1,13 @@
+---
 RESEARCH ARCHIVE
+---
 
 Thesis: A blended distance to define "people-like-me"
 
 Student: Anaïs Fopma
 
 Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
----
+
 ---
 # Introduction
 This repository contains all necessary files to reproduce the results reported in the master's thesis: A blended distance to define "people-like-me".
@@ -46,11 +48,8 @@ The repository contains the following files:
 To replicate the results of Simulation study I, follow these steps:
 1. The blended metric is implemented in the mice.impute.blended function in a version of the [mice](https://cran.r-project.org/web/packages/mice/index.html) package that can be installed from [this branch](https://github.com/anaisfopma/mice/tree/development). To do so, run the following command in R: 
 
----
-library(devtools)
-install_github("anaisfopma/mice@development") 
 
----
+
 
 2. Go to the 'Simulation study I' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_I.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
