@@ -1,4 +1,4 @@
-# load libraryd packages
+# load packages
 library(mvtnorm) # data generation
 library(dplyr) # mutate
 library(magrittr) # %>% pipe operator
