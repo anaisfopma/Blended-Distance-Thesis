@@ -42,6 +42,7 @@ The repository contains the following files:
 |/4. Plots_bias.R          |Script to create the plots of the bias results|
 |/Simulation study I.Rproj |R project of Simulation study I|
 |/evaluate.function.R      |Function called by '1. Execute_I.R' and used to evaluate the simulation results|
+|Requirements.md           |File containing the software and dependencies used, including version numbers. Note that all required packages are included in the scripts.|
 |Thesis.pdf                |Thesis manuscript|
 
 ## Replication Simulation study I
