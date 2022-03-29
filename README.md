@@ -1,4 +1,3 @@
----
 RESEARCH ARCHIVE
 
 Thesis: A blended distance to define "people-like-me"
@@ -6,7 +5,7 @@ Thesis: A blended distance to define "people-like-me"
 Student: Anaïs Fopma
 
 Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
-
+---
 ---
 # Introduction
 This repository contains all necessary files to reproduce the results reported in the master's thesis: A blended distance to define "people-like-me".
@@ -45,7 +44,11 @@ The repository contains the following files:
 
 ## Replication Simulation study I
 To replicate the results of Simulation study I, follow these steps:
-1. The blended metric is implemented in the mice.impute.blended function in a version of the [mice](https://cran.r-project.org/web/packages/mice/index.html) package that can be installed from [this branch](https://github.com/anaisfopma/mice/tree/development). To do so, run the following command in R: install_github("anaisfopma/mice@development"). Note that the package "devtools" is required for this. All other package requirements are included in the scripts.
+1. The blended metric is implemented in the mice.impute.blended function in a version of the [mice](https://cran.r-project.org/web/packages/mice/index.html) package that can be installed from [this branch](https://github.com/anaisfopma/mice/tree/development). To do so, run the following command in R: 
+---
+library(devtools)
+install_github("anaisfopma/mice@development") 
+---
 2. Go to the 'Simulation study I' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_I.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
 4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The latex tables will be given in the output in the R console. 
