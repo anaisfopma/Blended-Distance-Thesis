@@ -1,4 +1,5 @@
 RESEARCH ARCHIVE
+
 Thesis: A blended distance to define "people-like-me"
 Student: Anaïs Fopma
 Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
@@ -21,7 +22,7 @@ This results in a total of 24 data-generating mechanisms over which the performa
 
 ## Application to empirical data 
 The blended metric is also applied to data from the Sociaal Medisch Onderzoek Consultatiebureau Kinderen (SMOCK) study. The SMOCK database contains
-the anonymised growth data of 1,933 children aged 0-15 months. In addition, the database contains covariates that influence growth, such as the sex, gestational age, birth weight, and height of the father and mother. The database is not publicly available. To request access to the data, please contact [Anaïs Fopma](a.m.fopma@uu.nl). The use of these data for this study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906.
+the anonymised growth data of 1,933 children aged 0-15 months. In addition, the database contains covariates that influence growth, such as the sex, gestational age, birth weight, and height of the father and mother. The database is not publicly available. To request access to the data, please contact Anaïs Fopma: a.m.fopma@uu.nl. The use of these data for this study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906.
 
 ---
 
@@ -53,5 +54,5 @@ To replicate the results of Simulation study I, follow these steps:
 ---
 
 # Permission and access
-This archive is publicly available and can be used by anyone. For help or any issues with the archive, you can contact [Anaïs Fopma](a.m.fopma@uu.nl).
+This archive is publicly available and can be used by anyone. For help or any issues with the archive, you can contact Anaïs Fopma: a.m.fopma@uu.nl.
 
