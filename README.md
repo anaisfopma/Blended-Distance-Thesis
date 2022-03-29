@@ -1,11 +1,13 @@
+---
 RESEARCH ARCHIVE
 
 Thesis: A blended distance to define "people-like-me"
+
 Student: Anaïs Fopma
+
 Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
 
 ---
-
 # Introduction
 This repository contains all necessary files to reproduce the results reported in the master's thesis: A blended distance to define "people-like-me".
 The research consists of two simulation studies and an application to empirical data, investigating the properties of a blended distance measure. This measure is a weighted version of the predictive distance used in predictive mean matching (PMM), and the Mahalanobis distance. 
@@ -25,7 +27,6 @@ The blended metric is also applied to data from the Sociaal Medisch Onderzoek Co
 the anonymised growth data of 1,933 children aged 0-15 months. In addition, the database contains covariates that influence growth, such as the sex, gestational age, birth weight, and height of the father and mother. The database is not publicly available. To request access to the data, please contact Anaïs Fopma: a.m.fopma@uu.nl. The use of these data for this study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906.
 
 ---
-
 # Instructions for running the scripts
 The repository contains the following files:
 
@@ -52,7 +53,6 @@ To replicate the results of Simulation study I, follow these steps:
 6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines. 
 
 ---
-
 # Permission and access
 This archive is publicly available and can be used by anyone. For help or any issues with the archive, you can contact Anaïs Fopma: a.m.fopma@uu.nl.
 
