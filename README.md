@@ -55,8 +55,8 @@ install_github("anaisfopma/mice@development")
 2. Go to the 'Simulation study I' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_I.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
 4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The latex tables will be given in the output in the R console. 
-5. To create the plots for the coverage results displayed in the thesis manuscript, open the '3. Plots_coverage.R' file and run all lines. 
-6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines. 
+5. To create the plots for the coverage results displayed in the thesis manuscript, open the '3. Plots_coverage.R' file and run all lines. If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
+6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines.  If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 
 ---
 # Permission and access
