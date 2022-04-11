@@ -1,19 +1,30 @@
-##################################################################################
-# DGM 1: MECHANISM = MCAR, MISSING = 25%, DISTRIBUTION = NORMAL, CORRELATION = 0 #
-##################################################################################
+#################
+# SIMULATION II #
+#################
+
+# load packages
+library(mvtnorm) # data generation
+library(dplyr) # mutate
+library(magrittr) # %>% pipe operator
+library(purrr) # mapping
+library(mice) # amputation of data and imputation with pmm
+library(future) # parallel processing
+library(furrr) # apply mapping functions in parallel using futures 
+library(tibble) # column_to_rownames function in evaluate.function
+
 
 # set simulation parameters
 set.seed(123)
-n = 500                     # fixed
-nsim = 1000                 # fixed
-mis = .25                   # variable (25% and 50%)
-mech = "MCAR"               # variable (MCAR and MARright)
-rho = 0                     # variable (rho = 0, rho = .1, rho = .7)
+n = 500                   
+nsim = 50                 
+rho = 0.7                     
 
 
 ############################
 # DATA GENERATING FUNCTION #
 ############################
+
+# skewed data generation
 gen_data <- function(n) {
   out <- rmvnorm(n = n,
                  sigma = matrix(c(1, rho, rho, rho, 1, rho, rho, rho, 1), 
@@ -22,6 +33,7 @@ gen_data <- function(n) {
                  mean = c(10, 10, 10))
   colnames(out) <- c("x1", "x2", "x3")
   out %>% 
+    apply(., MARGIN = 2, function(x) {x^12/max(x^11)}) %>%
     as_tibble %>% 
     mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
 }
@@ -45,8 +57,7 @@ mis_data <- lapply(X = mis.indic,
 # comparitive truths (the y's that are made missing)
 true.y <- lapply(mis.indic, function(x){data$y[x]})
   
-# optional: remove data 
-rm(data)
+
 
 # run imputation
 plan(multisession) # increase speed through futures
@@ -58,10 +69,9 @@ plan(multisession) # increase speed through futures
 ###########
 
 # PMM
-imp.pmm <- 
-  mis_data %>%
+imp.pmm <- mis_data %>%
   future_map(function(x){
-    x %>% .$amp %>% mice(meth = "pmm", 
+    x %>% mice(meth = "pmm", 
                          maxit = 1, 
                          print = FALSE)
   }, .options = furrr_options(seed = as.integer(123)))
@@ -70,7 +80,7 @@ imp.pmm <-
 imp.blend.pmm.rank <- 
   mis_data %>%
   future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
+    x %>% mice(meth = "blended", 
                          blend = 1, 
                          maxit = 1, 
                          print = FALSE)
@@ -80,7 +90,7 @@ imp.blend.pmm.rank <-
 imp.blendhalf.rank <- 
   mis_data %>%
   future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
+    x %>% mice(meth = "blended", 
                          blend = .5, 
                          maxit = 1, 
                          print = FALSE)
@@ -90,43 +100,10 @@ imp.blendhalf.rank <-
 imp.mahalan.rank <- 
   mis_data %>%
   future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
+    x %>% mice(meth = "blended", 
                          blend = 0, 
                          maxit = 1, 
                          print = FALSE)
-  }, .options = furrr_options(seed = as.integer(123)))
-
-# SCALED, BLENDING FACTOR = 1
-imp.blend.pmm.scale <- 
-  mis_data %>%
-  future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
-                         blend = 1, 
-                         maxit = 1,
-                         rank = FALSE, # calculate as scale
-                         print = FALSE) 
-  }, .options = furrr_options(seed = as.integer(123)))
-
-# SCALED, BLENDING FACTOR = 0.5
-imp.blendhalf.scale <- 
-  mis_data %>%
-  future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
-                         blend = .5, 
-                         maxit = 1,
-                         rank = FALSE, # calculate as scale
-                         print = FALSE) 
-  }, .options = furrr_options(seed = as.integer(123)))
-
-# SCALED, BLENDING FACTOR = 0
-imp.mahalan.scale <- 
-  mis_data %>%
-  future_map(function(x){
-    x %>% .$amp %>% mice(meth = "blended", 
-                         blend = 0, 
-                         maxit = 1,
-                         rank = FALSE, # calculate as scale
-                         print = FALSE) 
   }, .options = furrr_options(seed = as.integer(123)))
 
 plan(sequential)
@@ -140,11 +117,11 @@ plan(sequential)
 # save the relevant output
 out <- list(imp.pmm = imp.pmm,
             imp.blend.pmm.rank = imp.blend.pmm.rank,
-            imp.blend.pmm.scale = imp.blend.pmm.scale,
             imp.blendhalf.rank = imp.blendhalf.rank,
-            imp.blendhalf.scale = imp.blendhalf.scale,
-            imp.mahalan.rank = imp.mahalan.rank,
-            imp.mahalan.scale = imp.mahalan.scale)
+            imp.mahalan.rank = imp.mahalan.rank)
+
+# load evaluation function
+source("evaluate.function.R")
 
 # evaluate the output
 eval <- map(out, eval_sims)
@@ -153,4 +130,4 @@ eval <- map(out, eval_sims)
 rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
 
 # save workspace
-save.image("Workspaces/1.MCAR_25_normal_0.RData")
+save.image("Workspaces/Simulation_II.RData")
