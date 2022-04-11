@@ -1,0 +1,156 @@
+##################################################################################
+# DGM 1: MECHANISM = MCAR, MISSING = 25%, DISTRIBUTION = NORMAL, CORRELATION = 0 #
+##################################################################################
+
+# set simulation parameters
+set.seed(123)
+n = 500                     # fixed
+nsim = 1000                 # fixed
+mis = .25                   # variable (25% and 50%)
+mech = "MCAR"               # variable (MCAR and MARright)
+rho = 0                     # variable (rho = 0, rho = .1, rho = .7)
+
+
+############################
+# DATA GENERATING FUNCTION #
+############################
+gen_data <- function(n) {
+  out <- rmvnorm(n = n,
+                 sigma = matrix(c(1, rho, rho, rho, 1, rho, rho, rho, 1), 
+                                nrow = 3, 
+                                ncol = 3), 
+                 mean = c(10, 10, 10))
+  colnames(out) <- c("x1", "x2", "x3")
+  out %>% 
+    as_tibble %>% 
+    mutate(y = x1 + x2 + x3 + rnorm(n, mean = 0, sd = 7))
+}
+
+# generate true reference data set
+data <- gen_data(n)
+
+# vector of rows to be made missing
+mis.indic <- sample(1:nrow(data), size = nsim, replace = TRUE)
+
+# create list of incomplete versions where only one value is made 
+# missing based on mis.indic
+gen_mis <- function(x) {
+  dta <- data
+  dta[x, "y"] <- NA
+  return(dta)
+}
+mis_data <- lapply(X = mis.indic, 
+                   FUN = gen_mis)
+
+# comparitive truths (the y's that are made missing)
+true.y <- lapply(mis.indic, function(x){data$y[x]})
+  
+# optional: remove data 
+rm(data)
+
+# run imputation
+plan(multisession) # increase speed through futures
+
+
+
+###########
+# METHODS #
+###########
+
+# PMM
+imp.pmm <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "pmm", 
+                         maxit = 1, 
+                         print = FALSE)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 1
+imp.blend.pmm.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = 1, 
+                         maxit = 1, 
+                         print = FALSE)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.5
+imp.blendhalf.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = .5, 
+                         maxit = 1, 
+                         print = FALSE)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0
+imp.mahalan.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = 0, 
+                         maxit = 1, 
+                         print = FALSE)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# SCALED, BLENDING FACTOR = 1
+imp.blend.pmm.scale <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = 1, 
+                         maxit = 1,
+                         rank = FALSE, # calculate as scale
+                         print = FALSE) 
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# SCALED, BLENDING FACTOR = 0.5
+imp.blendhalf.scale <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = .5, 
+                         maxit = 1,
+                         rank = FALSE, # calculate as scale
+                         print = FALSE) 
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# SCALED, BLENDING FACTOR = 0
+imp.mahalan.scale <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% .$amp %>% mice(meth = "blended", 
+                         blend = 0, 
+                         maxit = 1,
+                         rank = FALSE, # calculate as scale
+                         print = FALSE) 
+  }, .options = furrr_options(seed = as.integer(123)))
+
+plan(sequential)
+
+
+
+##########
+# OUTPUT #
+##########
+
+# save the relevant output
+out <- list(imp.pmm = imp.pmm,
+            imp.blend.pmm.rank = imp.blend.pmm.rank,
+            imp.blend.pmm.scale = imp.blend.pmm.scale,
+            imp.blendhalf.rank = imp.blendhalf.rank,
+            imp.blendhalf.scale = imp.blendhalf.scale,
+            imp.mahalan.rank = imp.mahalan.rank,
+            imp.mahalan.scale = imp.mahalan.scale)
+
+# evaluate the output
+eval <- map(out, eval_sims)
+
+# remove everything except output and evaluation
+rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
+
+# save workspace
+save.image("Workspaces/1.MCAR_25_normal_0.RData")

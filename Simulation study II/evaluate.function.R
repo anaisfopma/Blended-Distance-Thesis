@@ -32,11 +32,5 @@ eval_sims <- function(sims, truth = true.x, true.y = mean.y){
            cov = `2.5 %` < true & true < `97.5 %`, 
            bias = qbar - true) %>% 
     select(qbar, se, t, df, b, `2.5 %`, `97.5 %`, true, cov, bias)
-  rsq <- sims %>% 
-    map(~.x %>% 
-          with(lm(y ~ x1 + x2 + x3)) %>% 
-          pool.r.squared()) %>% 
-    do.call("rbind", .) %>% 
-    as_tibble()
-  list(params = params, outcome = colMeans(y), R2 = rsq)
+  list(params = params, outcome = colMeans(y))
 }
