@@ -16,7 +16,7 @@ library(tibble) # column_to_rownames function in evaluate.function
 # set simulation parameters
 set.seed(123)
 n = 500                   
-nsim = 1000  
+nsim = 1000
 n.imp = 50
 rho = 0.7                     
 
@@ -101,6 +101,17 @@ imp.blendhalf.rank <-
   }, .options = furrr_options(seed = as.integer(123)))
 
 # RANKED, BLENDING FACTOR = 0
+imp.blend0.1.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.1, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0
 imp.mahalan.rank <- 
   mis_data %>%
   future_map(function(x){
@@ -129,7 +140,9 @@ out <- list(imp.pmm = imp.pmm,
 source("evaluate.function.R")
 
 # evaluate the output
-eval <- map(out, eval_sims)
+eval <- map(out, eval_sim2)
+sapply(eval, colMeans) %>% t()
+# plot eval mahalanobis estimate distribution vs pmm estimate distribution
 
 # remove everything except output and evaluation
 rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
