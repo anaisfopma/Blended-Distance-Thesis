@@ -16,7 +16,8 @@ library(tibble) # column_to_rownames function in evaluate.function
 # set simulation parameters
 set.seed(123)
 n = 500                   
-nsim = 50                 
+nsim = 1000  
+n.imp = 50
 rho = 0.7                     
 
 
@@ -73,7 +74,8 @@ imp.pmm <- mis_data %>%
   future_map(function(x){
     x %>% mice(meth = "pmm", 
                          maxit = 1, 
-                         print = FALSE)
+                         print = FALSE, 
+                         m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
 # RANKED, BLENDING FACTOR = 1
@@ -83,7 +85,8 @@ imp.blend.pmm.rank <-
     x %>% mice(meth = "blended", 
                          blend = 1, 
                          maxit = 1, 
-                         print = FALSE)
+                         print = FALSE, 
+                         m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
 # RANKED, BLENDING FACTOR = 0.5
@@ -93,7 +96,8 @@ imp.blendhalf.rank <-
     x %>% mice(meth = "blended", 
                          blend = .5, 
                          maxit = 1, 
-                         print = FALSE)
+                         print = FALSE, 
+                         m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
 # RANKED, BLENDING FACTOR = 0
@@ -103,7 +107,8 @@ imp.mahalan.rank <-
     x %>% mice(meth = "blended", 
                          blend = 0, 
                          maxit = 1, 
-                         print = FALSE)
+                         print = FALSE, 
+                         m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
 plan(sequential)
