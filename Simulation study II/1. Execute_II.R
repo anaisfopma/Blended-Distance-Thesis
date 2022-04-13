@@ -16,7 +16,7 @@ library(tibble) # column_to_rownames function in evaluate.function
 # set simulation parameters
 set.seed(123)
 n = 500                   
-nsim = 1000
+nsim = 10
 n.imp = 50
 rho = 0.7                     
 
@@ -89,18 +89,95 @@ imp.blend.pmm.rank <-
                          m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
+# RANKED, BLENDING FACTOR = 0.9
+imp.blend0.9.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.9, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.8
+imp.blend0.8.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.8, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.7
+imp.blend0.7.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.7, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.6
+imp.blend0.6.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.6, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
 # RANKED, BLENDING FACTOR = 0.5
 imp.blendhalf.rank <- 
   mis_data %>%
   future_map(function(x){
     x %>% mice(meth = "blended", 
-                         blend = .5, 
+                         blend = 0.5, 
                          maxit = 1, 
                          print = FALSE, 
                          m = n.imp)
   }, .options = furrr_options(seed = as.integer(123)))
 
-# RANKED, BLENDING FACTOR = 0
+# RANKED, BLENDING FACTOR = 0.4
+imp.blend0.4.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.4, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.3
+imp.blend0.3.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.3, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.2
+imp.blend0.2.rank <- 
+  mis_data %>%
+  future_map(function(x){
+    x %>% mice(meth = "blended", 
+               blend = 0.2, 
+               maxit = 1, 
+               print = FALSE, 
+               m = n.imp)
+  }, .options = furrr_options(seed = as.integer(123)))
+
+# RANKED, BLENDING FACTOR = 0.1
 imp.blend0.1.rank <- 
   mis_data %>%
   future_map(function(x){
@@ -133,7 +210,15 @@ plan(sequential)
 # save the relevant output
 out <- list(imp.pmm = imp.pmm,
             imp.blend.pmm.rank = imp.blend.pmm.rank,
+            imp.blend0.9.rank = imp.blend0.9.rank,
+            imp.blend0.8.rank = imp.blend0.8.rank,
+            imp.blend0.7.rank = imp.blend0.7.rank,
+            imp.blend0.6.rank = imp.blend0.6.rank,
             imp.blendhalf.rank = imp.blendhalf.rank,
+            imp.blend0.4.rank = imp.blend0.4.rank, 
+            imp.blend0.3.rank = imp.blend0.3.rank,
+            imp.blend0.2.rank = imp.blend0.2.rank,
+            imp.blend0.1.rank = imp.blend0.1.rank,
             imp.mahalan.rank = imp.mahalan.rank)
 
 # load evaluation function
