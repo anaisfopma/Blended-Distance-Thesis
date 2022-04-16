@@ -16,7 +16,7 @@ library(tibble) # column_to_rownames function in evaluate.function
 # set simulation parameters
 set.seed(123)
 n = 500                   
-nsim = 10
+nsim = 1000
 n.imp = 50
 rho = 0.7                     
 
