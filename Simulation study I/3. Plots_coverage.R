@@ -407,7 +407,7 @@ plots_cov <- ggplot(dat_cov, aes(x=method, y=cov)) +
                                "Scaled, blend = 1", "Scaled, blend = 0.5", "Scaled, blend = 0"),
                       values=c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#666666")) +
   theme(panel.spacing = unit(1, "lines")) +
-  geom_point(data=dat_cov %>% slice(c(6, 17, 20, 27, 41, 62, 83, 101, 129)),
+  geom_point(data=dat_cov %>% slice(c(6, 17, 20, 27, 41, 62, 83, 101)),
              pch=21, 
              size=4,
              colour="red")
