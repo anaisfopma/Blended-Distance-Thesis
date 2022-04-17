@@ -13,6 +13,10 @@ load("Workspaces/Simulation_II.RData")
 sapply(eval, colMeans) %>% 
   t() %>% 
   data.frame() %>%
+  mutate(method = c("PMM", "Blending factor = 1", "Blending factor = 0.9", "Blending factor = 0.8",
+                    "Blending factor = 0.7", "Blending factor = 0.6", "Blending factor = 0.5", "Blending factor = 0.4",
+                    "Blending factor = 0.3", "Blending factor = 0.2", "Blending factor = 0.1", "Blending factor = 0"),
+             .before = estimate) %>%
   xtable() %>%
   print(include.rownames=FALSE)
   
