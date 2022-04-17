@@ -16,7 +16,7 @@ library(tibble) # column_to_rownames function in evaluate.function
 # set simulation parameters
 set.seed(123)
 n = 500                   
-nsim = 1000
+nsim = 10000
 n.imp = 50
 rho = 0.7                     
 
@@ -226,8 +226,6 @@ source("evaluate.function.R")
 
 # evaluate the output
 eval <- map(out, eval_sim2)
-sapply(eval, colMeans) %>% t()
-# plot eval mahalanobis estimate distribution vs pmm estimate distribution
 
 # remove everything except output and evaluation
 rm(list=setdiff(ls(), c("out", "eval", "eval_sims")))
