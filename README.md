@@ -19,9 +19,10 @@ Simulation study I follows a full factorial design. The methods that are compare
 - The missingness proportion is varied over two conditions: 25% and 50%.
 - The distribution is varied over two conditions: a normal distribution and a strongly skewed distribution.
 - The correlation is varied over three conditions: a correlation of 0, 0.1, and 0.7.
-This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage and bias.  
+This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage, bias and explained variance.  
 
 ## Simulation study II
+In the second simulation, the ranked version of the blended metric is evaluated with blending factors ranging from 0 to 1, with intervals of 0.1. The data-generating conditions are a skewed distribution and correlation of 0.7. A sample of size 500 is drawn and a single random case in the data will be made incomplete for the outcome. This missing value is imputed 50 times and evaluated against its true value. Performance is measured primarily in terms of variance of the imputations, coverage, bias, and the root mean square error (RMSE). 
 
 ## Application to empirical data 
 The blended metric is also applied to data from the Sociaal Medisch Onderzoek Consultatiebureau Kinderen (SMOCK) study. The SMOCK database contains
@@ -40,8 +41,15 @@ The repository contains the following files:
 |/2. Tables.R              |Script to create the tables with results|
 |/3. Plots_coverage.R      |Script to create the plots of the coverage results|
 |/4. Plots_bias.R          |Script to create the plots of the bias results|
+|/5. Plots_R2.R            |Script to create the plots of the R squared results|
 |/Simulation study I.Rproj |R project of Simulation study I|
 |/evaluate.function.R      |Function called by '1. Execute_I.R' and used to evaluate the simulation results|
+|Simulation study II       |Folder containing all files for Simulation study II|
+|/Workspaces               |Folder in which the workspaces of the simulation will be stored|
+|/1. Execute_II.R          |Script to run Simulation study I|
+|/2. Table&plot.R          |Script to create the table and plot of the results|
+|/Simulation study II.Rproj|R project of Simulation study II|
+|/evaluate.function.R      |Function called by '1. Execute_II.R' and used to evaluate the simulation results|
 |Requirements.md           |File containing the software and dependencies used, including version numbers. Note that all required packages are included in the scripts.|
 |Thesis.pdf                |Thesis manuscript|
 
@@ -59,6 +67,13 @@ If this does not work, it is also possible to move the package to your default R
 4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The latex tables will be given in the output in the R console. 
 5. To create the plots for the coverage results displayed in the thesis manuscript, open the '3. Plots_coverage.R' file and run all lines. If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines.  If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
+
+## Replication Simulation study II
+To replicate the results of Simulation study II, follow these steps:
+
+1. Go to the 'Simulation study II' folder and open the 'Simulation study I.Rproj' file.
+3. To run the simulation, open the '1. Execute_II.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
+4. To create the table and plot displayed in the thesis manuscript, open the '2. Table&plot.R' file and run all lines. The latex table will be given in the output in the R console. 
 
 ---
 # Permission and access
