@@ -393,9 +393,7 @@ dat_cov$mech <- factor(dat_cov$mech, levels = c("MCAR", "MAR"))
 plots_cov <- ggplot(dat_cov, aes(x=method, y=cov)) +
   geom_hline(yintercept = 0.95,  linetype = "dotted", size = 0.1) +
   geom_point(aes(color = method)) + 
-  facet_grid(dist + cor ~ mech + mis) +
-  coord_cartesian(ylim = c(0.3, 1.1)) +
-  scale_y_continuous(breaks=c(0.4, 0.6, 0.8, 1.0)) +
+  facet_grid(dist + cor ~ mech + mis, scales = "free") +
   theme_tufte() +
   theme(axis.line=element_blank(),
         axis.text.x=element_blank(),axis.ticks=element_blank(),
@@ -407,9 +405,5 @@ plots_cov <- ggplot(dat_cov, aes(x=method, y=cov)) +
                                "Scaled, blend = 1", "Scaled, blend = 0.5", "Scaled, blend = 0"),
                       values=c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#666666")) +
   theme(panel.spacing = unit(1, "lines")) +
-  geom_point(data=dat_cov %>% slice(c(6, 17, 20, 27, 41, 62, 83, 101)),
-             pch=21, 
-             size=4,
-             colour="red")
   
 plots_cov
