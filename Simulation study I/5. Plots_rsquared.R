@@ -346,7 +346,7 @@ dat_R2 <- dat_R2 %>% round(3)
 plots_R2 <- ggplot(dat_R2, aes(x=method, y=R2)) +
   geom_hline(yintercept = 0, linetype = "dotted", size = 0.1) +
   geom_point(aes(color = method)) +
-  facet_grid(dist + cor ~ mech + mis) +
+  facet_grid(dist + cor ~ mech + mis, scales = "free") +
   theme_tufte() +
   theme(axis.line=element_blank(),
         axis.text.x=element_blank(),axis.ticks=element_blank(),

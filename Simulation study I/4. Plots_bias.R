@@ -396,9 +396,7 @@ dat_bias <- dat_bias %>%
 plots_bias <- ggplot(dat_bias, aes(x=method, y=bias)) +
   geom_hline(yintercept = 0, linetype = "dotted", size = 0.1) +
   geom_point(aes(color = method)) +
-  facet_grid(dist + cor ~ mech + mis) +
-  coord_cartesian(ylim = c(-0.7, 0.1)) +
-  scale_y_continuous(breaks=c(0.0, -0.2, -0.4, -0.6)) +
+  facet_grid(dist + cor ~ mech + mis, scales = "free") +
   theme_tufte() +
   theme(axis.line=element_blank(),
         axis.text.x=element_blank(),axis.ticks=element_blank(),
@@ -409,10 +407,6 @@ plots_bias <- ggplot(dat_bias, aes(x=method, y=bias)) +
                       labels=c("Predictive", "Ranked, blend = 1", "Ranked, blend = 0.5", "Ranked, blend = 0", 
                                "Scaled, blend = 1", "Scaled, blend = 0.5", "Scaled, blend = 0"),
                       values=c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#666666")) +
-  theme(panel.spacing = unit(1, "lines")) + 
-  geom_point(data=dat_bias %>% slice(c(4, 7, 11, 14, 24, 27, 31, 34, 45, 46, 48, 49, 52, 53, 55, 56, 66, 73)),
-             pch=21, 
-             size=4,
-             colour="red")
+  theme(panel.spacing = unit(1, "lines"))
 
 plots_bias
