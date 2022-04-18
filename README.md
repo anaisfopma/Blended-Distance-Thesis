@@ -53,6 +53,7 @@ library(devtools)
 install_github("anaisfopma/mice@development") 
 ```
 If this does not work, it is also possible to move the package to your default R library manually. Go to [the branch](https://github.com/anaisfopma/mice/tree/development), click on the Code button and choose Download ZIP. In your downloads folder, extract all files in the ZIP file, and rename the resulting folder 'mice'. Move the mice folder to your default R library (of which the location will probably look something like this: "C:\Users\Name\Documents\R\R-4.1.3\library").
+
 2. Go to the 'Simulation study I' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_I.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
 4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The latex tables will be given in the output in the R console. 
