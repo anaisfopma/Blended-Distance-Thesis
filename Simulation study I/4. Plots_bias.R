@@ -407,6 +407,7 @@ plots_bias <- ggplot(dat_bias, aes(x=method, y=bias)) +
                       labels=c("Predictive", "Ranked, blend = 1", "Ranked, blend = 0.5", "Ranked, blend = 0", 
                                "Scaled, blend = 1", "Scaled, blend = 0.5", "Scaled, blend = 0"),
                       values=c("#1B9E77", "#D95F02", "#7570B3", "#E7298A", "#66A61E", "#E6AB02", "#666666")) +
-  theme(panel.spacing = unit(1, "lines"))
+  theme(panel.spacing = unit(1, "lines")) +
+  theme(axis.line = element_line(size = 0.3, colour = "black"))
 
 plots_bias
