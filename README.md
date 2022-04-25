@@ -24,9 +24,9 @@ This results in a total of 24 data-generating mechanisms over which the performa
 ## Simulation study II
 In the second simulation, the ranked version of the blended metric is evaluated with blending factors ranging from 0 to 1, with intervals of 0.1. The data-generating conditions are a skewed distribution and correlation of 0.7. A sample of size 500 is drawn and a single random case in the data will be made incomplete for the outcome. This missing value is imputed 50 times and evaluated against its true value. Performance is measured primarily in terms of variance of the imputations, coverage, bias, and the root mean square error (RMSE). 
 
-## Application to empirical data 
-The blended metric is also applied to data from the Sociaal Medisch Onderzoek Consultatiebureau Kinderen (SMOCK) study. The SMOCK database contains
-the anonymised growth data of 1,933 children aged 0-15 months. In addition, the database contains covariates that influence growth, such as the sex, gestational age, birth weight, and height of the father and mother. The database is not publicly available. To request access to the data, please contact Anaïs Fopma: a.m.fopma@uu.nl. The use of these data for this study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906.
+## Ethics
+The study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906. The approval is valid through 09 May 2022. The approval of the Ethical Review Board concerns ethical aspects, as well as data management and privacy issues (including the GDPR). It should be noticed that any changes in the research design oblige a renewed review by the Ethical Review Board.
+
 
 ---
 # Instructions for running the scripts
