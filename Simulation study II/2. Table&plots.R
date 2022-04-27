@@ -5,7 +5,6 @@ library(ggplot2)
 library(tibble)
 library(ggthemes)
 library(mvtnorm)
-library(patchwork)
 
 
 # load the workspace with the evaluation results
@@ -45,8 +44,6 @@ secovplot
 # obtain true reference data set
 set.seed(123)
 n = 500                   
-nsim = 10000
-n.imp = 50
 rho = 0.7                     
 
 gen_data <- function(n) {
