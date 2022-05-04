@@ -62,19 +62,33 @@ gen_data <- function(n) {
 true_data <- gen_data(n)
 
 
-# plot the distributions of the estimates obtained with blend = 0, blend = 1, and the true data
+# plot density of the estimates obtained with blend = 0, blend = 1, and the true data
 data <- data.frame(values = c(eval$imp.blend.pmm.rank$estimate, eval$imp.mahalan.rank$estimate, true_data$y),
                    group = c(rep("Estimates blending factor = 1", 10000), rep("Estimates blending factor = 0", 10000), rep("True data", 500)))
 
-distplot <- ggplot(data, aes(x = values, fill = group)) +                       
-  geom_histogram(position = "identity", alpha = 0.2, bins = 100, aes(y = ..density..)) +
+densplot <- ggplot(data, aes(x = values, fill = group)) +                       
+  geom_density(position = "identity", alpha = 0.2, aes(y = ..density..)) +
   geom_vline(aes(xintercept=4.287998),
              color="black", linetype="dashed", size=0.5) +
-  labs(y= "Frequency", x = "Outcome") +
+  labs(y= "Density", x = " ") +
   theme_tufte() +
   theme(legend.title = element_blank()) +
   theme(axis.line = element_line(size = 0.3, colour = "black"))
 
-distplot
+densplot
 
 
+# plot absolute bias results for blend = 0 and blend = 1
+data_absbias <- data.frame(values = c(eval$imp.blend.pmm.rank$absbias, eval$imp.mahalan.rank$absbias),
+                   group = c(rep("Absolute bias blending factor = 1", 10000), rep("Absolute bias blending factor = 0", 10000)))
+
+densplot_absbias <- ggplot(data_absbias, aes(x = values, fill = group)) +                       
+  geom_density(position = "identity", alpha = 0.2) +
+  geom_vline(aes(xintercept=0),
+             color="black", linetype="dashed", size=0.5) +
+  labs(y= "Density", x = " ") +
+  theme_tufte() +
+  theme(legend.title = element_blank()) +
+  theme(axis.line = element_line(size = 0.3, colour = "black"))
+
+densplot_absbias
