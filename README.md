@@ -18,7 +18,7 @@ Simulation study I follows a full factorial design. The methods that are compare
 - The missingness mechanism is varied over two conditions: missing completely at random (MCAR) and missing at random (MAR). 
 - The missingness proportion is varied over two conditions: 25% and 50%.
 - The distribution is varied over two conditions: a normal distribution and a strongly skewed distribution.
-- The correlation is varied over three conditions: a correlation of 0, 0.1, and 0.7.
+- The correlation is varied over three conditions: a correlation of 0, 0.1, and 0.7.  
 This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage, bias and proportion of explained variance.  
 
 ## Simulation study II
