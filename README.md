@@ -11,7 +11,7 @@ Supervisors: Prof. Dr. Stef van Buuren, Dr. Gerko Vink & Mingyang Cai
 ---
 # Introduction
 This repository contains all necessary files to reproduce the results reported in the master's thesis: A blended distance to define "people-like-me".
-The research consists of two simulation studies and an application to empirical data, investigating the properties of a blended distance measure. This measure is a weighted version of the predictive distance used in predictive mean matching (PMM), and the Mahalanobis distance. 
+The research consists of two simulation studies investigating the properties of a blended distance measure. This measure is a weighted version of the predictive distance used in predictive mean matching (PMM), and the Mahalanobis distance. 
 
 ## Simulation study I
 Simulation study I follows a full factorial design. The methods that are compared, are: the predictive distance, a ranked version of the blended metric with a blending factor of 1, 0.5, and 0, respectively, and a scaled version of the blended metric with a blending factor of 1, 0.5, and 0, respectively. The data-generating mechanisms are varied in their missingness mechanism, missingness proportion, distribution, and correlation: 
@@ -67,13 +67,14 @@ If this does not work, it is also possible to move the package to your default R
 4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The LaTex tables will be given in the output in the R console. 
 5. To create the plots for the coverage results displayed in the thesis manuscript, open the '3. Plots_coverage.R' file and run all lines. If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines.  If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
+7. To create the plots for the R squared results displayed in the thesis manuscript, open the '5. Plots_rsquared.R' file and run all lines.
 
 ## Replication Simulation study II
 To replicate the results of Simulation study II, follow these steps:
 
 1. Go to the 'Simulation study II' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_II.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
-4. To create the table and plot displayed in the thesis manuscript, open the '2. Table&plot.R' file and run all lines. The latex table will be given in the output in the R console. 
+4. To create the table and plot displayed in the thesis manuscript, open the '2. Table&plots.R' file and run all lines. The LaTex table will be given in the output in the R console. 
 
 ---
 # Permission and access
