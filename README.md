@@ -20,7 +20,7 @@ Simulation study I follows a full factorial design. The methods that are compare
 - The distribution is varied over two conditions: a normal distribution and a strongly skewed distribution.
 - The correlation is varied over three conditions: a correlation of 0, 0.1, and 0.7.  
 
-This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage, bias and proportion of explained variance.  
+This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics is evaluated, primarily in terms of coverage, bias and proportion of explained variance.  
 
 ## Simulation study II
 In the second simulation, the ranked version of the blended metric is evaluated with blending factors ranging from 0 to 1, with intervals of 0.1. The data-generating conditions are a skewed distribution and correlation of 0.7. The number of simulations is set to 10000. In every simulation, the outcome for a single random case is made incomplete and thereafter imputed 50 times. Performance is measured primarily in terms of accuracy, validity, and precision. 
@@ -54,9 +54,9 @@ The repository contains the following files:
 |Requirements.md           |File containing the software and dependencies used, including version numbers. Note that all required packages are included in the scripts.|
 |Thesis.pdf                |Thesis manuscript|
 
-## Replication Simulation study I
-To replicate the results of Simulation study I, follow these steps:
-1. The blended metric is implemented in the mice.impute.blended function in a version of the [mice](https://cran.r-project.org/web/packages/mice/index.html) package that can be installed from [this branch](https://github.com/anaisfopma/mice/tree/development). To do so, run the following command in R: 
+## Reproduction Simulation study I
+To reproduce the results of Simulation study I, follow these steps:
+1. The blended metric is implemented in the mice.impute.blended function in an adapted version of the [mice](https://cran.r-project.org/web/packages/mice/index.html) package that can be installed from [this branch](https://github.com/anaisfopma/mice/tree/development). To do so, run the following command in R: 
 ```
 library(devtools)
 install_github("anaisfopma/mice@development") 
@@ -70,12 +70,12 @@ If this does not work, it is also possible to move the package to your default R
 6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines.  If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 7. To create the plots for the R squared results displayed in the thesis manuscript, open the '5. Plots_rsquared.R' file and run all lines.
 
-## Replication Simulation study II
-To replicate the results of Simulation study II, follow these steps:
+## Reproduction Simulation study II
+To reproduce the results of Simulation study II, follow these steps:
 
-1. Go to the 'Simulation study II' folder and open the 'Simulation study I.Rproj' file.
-3. To run the simulation, open the '1. Execute_II.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
-4. To create the table and plot displayed in the thesis manuscript, open the '2. Table&plots.R' file and run all lines. The LaTex table will be given in the output in the R console. 
+1. Go to the 'Simulation study II' folder and open the 'Simulation study II.Rproj' file.
+3. To run the simulation, open the '1. Execute_II.R' file and run all lines. The workspace will be saved in the 'Workspaces' folder. 
+4. To create the table and plots displayed in the thesis manuscript, open the '2. Table&plots.R' file and run all lines. The LaTex table will be given in the output in the R console. 
 
 ---
 # Permission and access
