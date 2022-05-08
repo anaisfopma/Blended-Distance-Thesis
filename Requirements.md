@@ -1,6 +1,8 @@
+Software: R version 4.2.0 (2022-04-01)
+Listed below are all packages with version numbers required for running the scripts in this research archive. Note that all necessary packages are already included in the scripts themselves, this document only serves as an overview.
 
-
-
+mvtnorm 1.1-3
+dplyr 
 library(mvtnorm) # data generation
 library(dplyr) # mutate
 library(magrittr) # %>% pipe operator
