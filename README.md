@@ -19,13 +19,13 @@ Simulation study I follows a full factorial design. The methods that are compare
 - The missingness proportion is varied over two conditions: 25% and 50%.
 - The distribution is varied over two conditions: a normal distribution and a strongly skewed distribution.
 - The correlation is varied over three conditions: a correlation of 0, 0.1, and 0.7.
-This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage, bias and explained variance.  
+This results in a total of 24 data-generating mechanisms over which the performance of each of the metrics was evaluated, primarily in terms of coverage, bias and proportion of explained variance.  
 
 ## Simulation study II
-In the second simulation, the ranked version of the blended metric is evaluated with blending factors ranging from 0 to 1, with intervals of 0.1. The data-generating conditions are a skewed distribution and correlation of 0.7. A sample of size 500 is drawn and a single random case in the data will be made incomplete for the outcome. This missing value is imputed 50 times and evaluated against its true value. Performance is measured primarily in terms of variance of the imputations, coverage, bias, and the root mean square error (RMSE). 
+In the second simulation, the ranked version of the blended metric is evaluated with blending factors ranging from 0 to 1, with intervals of 0.1. The data-generating conditions are a skewed distribution and correlation of 0.7. The number of simulations is set to 10000. In every simulation, the outcome for a single random case is made incomplete and thereafter imputed 50 times. Performance is measured primarily in terms of accuracy, validity, and precision. 
 
 ## Ethics
-The study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906. The approval is valid through 09 May 2022. The approval of the Ethical Review Board concerns ethical aspects, as well as data management and privacy issues (including the GDPR). It should be noticed that any changes in the research design oblige a renewed review by the Ethical Review Board.
+The study is approved by the Ethical Review Board of the Faculty of Social and Behavioural Sciences of Utrecht University. The approval is based on the documents sent by the researchers as requested in the form of the Ethics committee and filed under number 21-1906. The approval is valid through 09 May 2022. The approval of the Ethical Review Board concerns ethical aspects, as well as data management and privacy issues (including the GDPR).
 
 
 ---
@@ -41,13 +41,13 @@ The repository contains the following files:
 |/2. Tables.R              |Script to create the tables with results|
 |/3. Plots_coverage.R      |Script to create the plots of the coverage results|
 |/4. Plots_bias.R          |Script to create the plots of the bias results|
-|/5. Plots_R2.R            |Script to create the plots of the R squared results|
+|/5. Plots_rsquared.R      |Script to create the plots of the R squared results|
 |/Simulation study I.Rproj |R project of Simulation study I|
 |/evaluate.function.R      |Function called by '1. Execute_I.R' and used to evaluate the simulation results|
 |Simulation study II       |Folder containing all files for Simulation study II|
 |/Workspaces               |Folder in which the workspaces of the simulation will be stored|
 |/1. Execute_II.R          |Script to run Simulation study I|
-|/2. Table&plot.R          |Script to create the table and plot of the results|
+|/2. Table&plots.R         |Script to create the table and plot of the results|
 |/Simulation study II.Rproj|R project of Simulation study II|
 |/evaluate.function.R      |Function called by '1. Execute_II.R' and used to evaluate the simulation results|
 |Requirements.md           |File containing the software and dependencies used, including version numbers. Note that all required packages are included in the scripts.|
@@ -64,7 +64,7 @@ If this does not work, it is also possible to move the package to your default R
 
 2. Go to the 'Simulation study I' folder and open the 'Simulation study I.Rproj' file.
 3. To run the simulation, open the '1. Execute_I.R' file and run all lines. The workspaces of each of the simulation conditions will be saved in the 'Workspaces' folder. 
-4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The latex tables will be given in the output in the R console. 
+4. To create the tables displayed in the thesis manuscript, open the '2. Tables.R' file and run all lines. The LaTex tables will be given in the output in the R console. 
 5. To create the plots for the coverage results displayed in the thesis manuscript, open the '3. Plots_coverage.R' file and run all lines. If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 6. To create the plots for the bias results displayed in the thesis manuscript, open the '4. Plots_bias.R' file and run all lines.  If you have already run the code in '2. Tables.R', you can skip lines 14 to 111. 
 
